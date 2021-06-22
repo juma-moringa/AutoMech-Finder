@@ -1,4 +1,3 @@
-
 from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
@@ -56,6 +55,8 @@ class Mech(UserMixin,db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
+    specialization = db.Column(db.String(255), index = True,nullable = False)
+    
 
     @property
     def password(self):
