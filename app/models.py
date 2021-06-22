@@ -1,11 +1,13 @@
 from . import db
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin
 from . import login_manager
-from datetime import datetime
 
-
+@login_manager.user_loader
+def load_user(user_id):
+    return (int(user_id))
 class Formfield(db.Model):
+
+    __tablename__ = 'formfields'
+
     id = db.Column(db.Integer, primary_key = True)
     form_id = db.Column(db.Integer, db.ForeignKey('formbooking.id'))
     label = db.Column(db.String(80))
