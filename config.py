@@ -9,6 +9,8 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
 
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://angela:Angie168@localhost/mechfinder'
+
 
     #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
