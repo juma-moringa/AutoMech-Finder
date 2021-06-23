@@ -31,8 +31,15 @@
     {% endif %}
   </div>
   {% if mech == current_user %}
-    <a href="{{url_for('main.update_mech_profile',uname=user.username)}}">Edit profile</a>
-{% endif %}
+    <a href="{{url_for('main.update_mech_profile',uname=mech.username)}}">Edit profile</a>
+ {% endif %}
+ {% if mech == current_user %}
+    <form  action="{{url_for('main.update_mech_pic',uname=mech.username)}}" method="post" enctype = "multipart/form-data">
+
+      <input type="file"  name="photo" class="form-control" required>
+      <input type="submit">
+    </form>
+      {% endif %}
 </div>
 </div>
 {% endblock %}

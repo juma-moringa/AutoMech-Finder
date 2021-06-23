@@ -81,3 +81,14 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.user_profile',uname=uname))
+
+@main.route('/mech/<uname>/updatemech/pic',methods= ['POST'])
+@login_required
+def update_mech_pic(uname):
+    mech = Mech.query.filter_by(username = uname).first()
+    if 'photo' in request.files:
+        filename = photos.save(request.files['photo'])
+        path = f'photos/{filename}'
+        mech.profile_pic_path = path
+        db.session.commit()
+    return redirect(url_for('main.mech_profile',uname=uname))
