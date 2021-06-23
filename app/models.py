@@ -63,8 +63,9 @@ class Mech(UserMixin,db.Model):
     profile_pic_path = db.Column(db.String())
     # password_hash = db.Column(db.String(255))
     role = db.Column(db.String(255))
+    location = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
-    specialization = db.Column(db.String(255), index = True,nullable = False)
+    specialization = db.Column(db.String(255), index = True)
     
 
     @property
