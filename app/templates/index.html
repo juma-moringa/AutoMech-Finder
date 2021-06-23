@@ -2,6 +2,183 @@
 
 {% block content %}
 
-    <h1>Hello world</h1>
+<div class="container-fluid">
+    <section class="landing">
+        <div id="overlay">
+            <div class="d-flex align-items-center justify-content-center" style="height: 500px;">
+                <div>
+                    <h1>WELCOME TO AUTOMECH-FINDER</h1>
+                    <h1>A remote Autorepair anywhere at anytime</h1>
+                    <br><br><br>
+                    <p>Service at your home or office ·</p>
+                    <p> 7 days a week · Fair and transparent pricing</p>
+                    <p> GET AN ESTIMATE</p>   
+                    <p>   12-month / 12,000 mile warranty</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br><br>
+    <div class ="container">
+    <div class=row id=col><br>
+        <div class=col-md-3>
+            <h2>Featured on</h2>
+        </div>
+        <div class=col-md-3>
+             
+            <img src="{{url_for('static',filename='images/NTV_(Kenya)_logo.png')}}" height=50px>
+        </div>
+        <div class=col-md-3>
+        <img src="{{url_for('static',filename='images/citizen.png')}}" height=50px>
+        </div>
+        <div class=col-md-3>
+            <img src="{{url_for('static',filename='images/star.png')}}" height=50px>   
+        </div>
+    </div>
+</div>
+<br><br>
+<div class="container">
+    <div class="row" style="background-color: bisque;">
+        <br><br>
+        <div class="col-md-4">
+            <img src="{{url_for('static',filename='images/fare.jpeg')}}" > 
+            <h4>FAIR AND TRANSPARENT PRICING</h4>
+            <p>We offer fair and transparent pricing and provide estimates upfront for hundreds of services on thousands of cars. Book with confidence.</p>
+        </div>
+        <div class="col-md-4">
+            <img src="{{url_for('static',filename='images/location.jpeg')}}" > 
+            <h4>WE MAKE IT EASY</h4>
+            <p>Get a quote and book a service online 24/7. Our mechanics will come to your home or office, even on evenings and weekends. </p>
+        </div>
+        <div class="col-md-4">
+            <img src="{{url_for('static',filename='images/happy.png')}}" > 
+            <h4>HAPPINESS GUARANTEED</h4>
+            <p>We only work with highly rated mechanics.All services are backed by our 12-month / 12,000-mile warranty.</p>
+        </div>
+    </div>
+</div>
+<br><br><br>
+<div class="container">
+    <h2 style="text-align:center;"><b>GET OVER 50 REPAIR SERVICE AT YOUR HOME OFFICE,HOME OR ANY PLACE</b></h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header"> </div>
+                <div class="card-body"> 
+                    <ul>
+                        <li>Battery Replacement</li>
+                        <li>Change Oil and Filter</li>
+                        <li>Car is not starting inspection</li>
+                        <li>Brake Pads Replacement</li>
+                        <li>Timing Belt Replacement</li>
+                        <li>Pre-purchase Car Inspection</li>
+                        <li>AC Compressor Replacement</li>
+                       
+                    </ul>
+                </div> 
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header"> </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Starter Replacement</li>
+                        <li>Alternator Replacement</li>
+                        <li>Spark Plugs Replacement</li>
+                        <li>Water Pump Replacement</li>
+                        <li>Fuel Pump Replacement</li>
+                        <li>AC Recharge</li>
+                        <li>Drive Belt Replacement</li>
+                        
+                    </ul>
+                </div> 
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header"> </div>
+                <div class="card-body"> 
+                    <ul>
+                        <li>Radiator Replacement</li>
+                        <li>Oxygen Sensor Replacement</li>
+                        <li>Valve Cover Replacement Gasket Replacement</li>
+                        <li>Thermostart Replacement</li>
+                        <li>Wheel Bearing Replacement</li>
+                        <li>AC not working Inspection</li>
+                        <li>Axle/CV shaft Assembly replacement</li>
+                        
+                    </ul>
+                </div> 
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class = "row">
+       
+        <div class="col-md-6">
+           
+        </div>
+        <div class="col-md-6">
+            <h3>Enjoy convenient car repair and maintenance at your home or office.
+                It's as easy as 1-2-3.</h3>
+                <br>
+                <div class=circle>1</div><H3>MAKE A REQUEST</H3>
+                <p>Tell us what your car needs or ask for a diagnostic. Receive a free, fast, fair & transparent price quote.</p>
+                <br>
+                <div class=circle>2</div><H3>BOOK APPOINTMENT</H3>
+                <p>Provide your home or office location. Tell us when to meet you there.</p>
+                <br>
+                <div class=circle>3</div><H3>GET YOUR CAR FIXED</H3>
+                <p>That’s it. No more waiting in repair shops - our mechanics come to you.</p>
+        </div>
+    </div>
+</div>
+</div>
+
+<style>
+    .landing {
+    background-color: #ebebeb;
+    background: url('https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?cs=srgb&dl=pexels-andrea-piacquadio-3807517.jpg&fm=jpg') no-repeat fixed 100% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    flex-direction: column;
+    text-align: center;
+    background-position: center center;
+}
+
+#overlay {
+    top: 0;
+    bottom: 0;
+    padding: 8%;
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    
+}
+#col{
+    background-color:grey
+}
+*{
+    text-align: center;
+}
+.circle{
+    
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  background: #fff;
+  border: 3px solid #000;
+  color: #000;
+  text-align: center;
+  font: 32px Arial, sans-serif;
+
+}
+
+</style> 
 
 {% endblock%}
