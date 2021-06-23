@@ -10,3 +10,11 @@ class userForm(FlaskForm):
     queries = TextAreaField("Queries")
     email = StringField("Email")
     submit = SubmitField("submit")
+
+
+class queries(FlaskForm):
+      """
+      Class to create a wtf form for adding a car defect
+      """
+      problem = TextAreaField('Car Defect:')
+      submit = SubmitField('SUBMIT')

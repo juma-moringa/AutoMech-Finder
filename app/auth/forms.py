@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from wtforms.fields.core import SelectField
 from wtforms.validators import Required,Email,EqualTo
 from ..models import User
 from wtforms import ValidationError
@@ -62,4 +63,7 @@ class LoginForm2(FlaskForm):
     password = PasswordField('Password',validators =[Required()])
     remember = BooleanField('Remember me')
     submit = SubmitField('Sign In')
+    
+
+
     

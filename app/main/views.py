@@ -17,3 +17,25 @@ def index():
 
         return render_template("index.html")
 
+
+
+@main.route('/write_comment/<int:id>', methods=['GET', 'POST'])
+@login_required
+def queries(id):
+    """ 
+    Function to post comments 
+    """
+    
+    form = CommentForm()
+    title = 'post comment'
+    pitches = Pitch.query.filter_by(id=id).first()
+
+    if pitches is None:
+         abort(404)
+
+    if form.validate_on_submit():
+        opinion = form.opinion.data
+        new_comment = Comments(opinion = opinion, user_id = current_user.id, pitches_id = pitches.id)
+        new_comment.save_comment()
+        return redirect(url_for('.view_pitch', id = pitches.id))
+
