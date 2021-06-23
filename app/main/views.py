@@ -21,21 +21,10 @@ def index():
 
 @main.route('/write_comment/<int:id>', methods=['GET', 'POST'])
 @login_required
-def queries(id):
+def queries():
     """ 
-    Function to post comments 
+    Function to add a defect 
     """
-    
-    form = CommentForm()
-    title = 'post comment'
-    pitches = Pitch.query.filter_by(id=id).first()
 
-    if pitches is None:
-         abort(404)
 
-    if form.validate_on_submit():
-        opinion = form.opinion.data
-        new_comment = Comments(opinion = opinion, user_id = current_user.id, pitches_id = pitches.id)
-        new_comment.save_comment()
-        return redirect(url_for('.view_pitch', id = pitches.id))
-
+    return redirect("index.html")
