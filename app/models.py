@@ -1,9 +1,10 @@
 from . import db
-from . import login_manager
+from flask_login import login_manager
 
 @login_manager.user_loader
 def load_user(user_id):
     return (int(user_id))
+
 class Formfield(db.Model):
 
     __tablename__ = 'formfields'
