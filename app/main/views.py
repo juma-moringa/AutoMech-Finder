@@ -1,7 +1,7 @@
 from . import main
 from flask import render_template,request,redirect,url_for,abort, flash
 from flask_login import login_required, current_user
-from ..models import User
+from ..models import Mech, User
 from .. import db,photos
 from .forms import UpdateProfile
 
@@ -15,17 +15,27 @@ def index():
     return render_template('index.html')
 
 @main.route('/user/<uname>')
-def profile(uname):
+def user_profile(uname):
     user = User.query.filter_by(username = uname).first()
 
     if user is None:
         abort(404)
 
-    return render_template("profile/profile.html", user = user)
+    return render_template("profile/user_profile.html", user = user)
+
+@main.route('/mech/<uname>')
+def mech_profile(uname):
+    mech = Mech.query.filter_by(username = uname).first()
+
+    if mech is None:
+        abort(404)
+
+    return render_template("profile/mech_profile.html", mech = mech)
+
 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
 @login_required
-def update_profile(uname):
+def update_user_profile(uname):
     user = User.query.filter_by(username = uname).first()
     if user is None:
         abort(404)
@@ -39,5 +49,24 @@ def update_profile(uname):
         db.session.commit()
 
         return redirect(url_for('.profile',uname=user.username))
+
+    return render_template('profile/update.html',form =form)
+
+@main.route('/mech/<uname>/update',methods = ['GET','POST'])
+@login_required
+def update_mech_profile(uname):
+    mech = Mech.query.filter_by(username = uname).first()
+    if mech is None:
+        abort(404)
+
+    form = UpdateProfile()
+
+    if form.validate_on_submit():
+        mech.bio = form.bio.data
+
+        db.session.add(mech)
+        db.session.commit()
+
+        return redirect(url_for('.profile',uname=mech.username))
 
     return render_template('profile/update.html',form =form)

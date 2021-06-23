@@ -9,6 +9,10 @@ from . import login_manager
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+@login_manager.user_loader
+def load_mech(mech_id):
+    return Mech.query.get(int(mech_id))
+
 
 # user class
 class User(UserMixin,db.Model):
@@ -23,7 +27,9 @@ class User(UserMixin,db.Model):
     email = db.Column(db.String(255),unique = True,index = True)
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
-    password_hash = db.Column(db.String(255))
+    # password_hash = db.Column(db.String(255))
+    pass_secure = db.Column(db.String(255))
+    role = db.Column(db.String(255))
 
 
     @property
@@ -42,6 +48,7 @@ class User(UserMixin,db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
+
 class Mech(UserMixin,db.Model):
 
     '''
@@ -54,7 +61,9 @@ class Mech(UserMixin,db.Model):
     email = db.Column(db.String(255),unique = True,index = True)
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
-    password_hash = db.Column(db.String(255))
+    # password_hash = db.Column(db.String(255))
+    role = db.Column(db.String(255))
+    pass_secure = db.Column(db.String(255))
     specialization = db.Column(db.String(255), index = True,nullable = False)
     
 
@@ -72,7 +81,7 @@ class Mech(UserMixin,db.Model):
 
 
     def __repr__(self):
-        return f'User {self.username}'
+        return f'Mech {self.username}'
 
 
 

@@ -1,0 +1,3 @@
+Hello {{user.username}}
+Welcome to Mech-Finder
+We have just seen you have signed up for our application and want to welcome you to the family. Please enjoy the finding a good mechanic and learning more about fixing your car.

@@ -25,7 +25,7 @@
     {% endif %}
   </div>
   {% if user == current_user %}
-    <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
+    <a href="{{url_for('main.update_user_profile',uname=user.username)}}">Edit profile</a>
 {% endif %}
 </div>
 </div>

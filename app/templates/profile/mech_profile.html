@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="container">
+<div class="row">
+<!-- displaying  Username-->
+  <div class="col-md-4">
+    <h3> {{mech.username| capitalize}} </h3>
+
+    <!--Displaying user bio-->
+    {% if mech.bio %}
+      <p> {{mech.bio}}</p>
+    {%else%}
+      <p> {{mech.username| capitalize}} has no bio </p>
+    {% endif %}
+
+    {% if mech.specialization %}
+      <p> {{mech.specialization}}</p>
+    {%else%}
+      <p> {{mech.username| capitalize}} has no specializations </p>
+    {% endif %}
+  </div>
+
+  <!--Display profile photo-->
+  <div class="col-md-4">
+
+    {% if mech.profile_pic_path %}
+    <img src="{{url_for('static',filename=mech.profile_pic_path)}}" alt="" class="img-thumbnail">
+    {%else%}
+    <p>No profile picture</p>
+    {% endif %}
+  </div>
+  {% if mech == current_user %}
+    <a href="{{url_for('main.update_mech_profile',uname=user.username)}}">Edit profile</a>
+{% endif %}
+</div>
+</div>
+{% endblock %}
