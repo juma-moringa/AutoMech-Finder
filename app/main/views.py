@@ -48,7 +48,7 @@ def update_user_profile(uname):
         db.session.add(user)
         db.session.commit()
 
-        return redirect(url_for('.profile',uname=user.username))
+        return redirect(url_for('.user_profile',uname=user.username))
 
     return render_template('profile/update.html',form =form)
 
@@ -67,6 +67,17 @@ def update_mech_profile(uname):
         db.session.add(mech)
         db.session.commit()
 
-        return redirect(url_for('.profile',uname=mech.username))
+        return redirect(url_for('.mech_profile',uname=mech.username))
 
     return render_template('profile/update.html',form =form)
+
+@main.route('/user/<uname>/update/pic',methods= ['POST'])
+@login_required
+def update_pic(uname):
+    user = User.query.filter_by(username = uname).first()
+    if 'photo' in request.files:
+        filename = photos.save(request.files['photo'])
+        path = f'photos/{filename}'
+        user.profile_pic_path = path
+        db.session.commit()
+    return redirect(url_for('main.user_profile',uname=uname))
