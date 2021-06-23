@@ -11,9 +11,20 @@ from ..email import mail_message
 
 # 1 the main index(default)
 @main.route("/", methods=["GET", "POST"])
-def index():
+def views():
 
        
 
         return render_template("index.html")
 
+from app import main
+from flask import render_template, request, redirect, url_for
+from . import main
+
+
+@main.route('/')
+def index():
+    title = 'AutoMech'
+
+
+    return render_template('viewmech.html', title=title)
