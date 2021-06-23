@@ -3,23 +3,37 @@
 {%block content%}
 
 <style>
-    input{
-        padding: 2%;
+    .form-control,
+    .btnsub {
+        height: 50px;
+    }
+
+    .results {
+        padding-top: 4%;
+    }
+
+    img {
+        border-radius: 50%;
+    }
+
+    .lorem {
+        padding: 3%;
+        padding-top: 10%;
+
     }
 </style>
 <div class="col-md-12 text-center"
-    style="padding: 20%;; margin-bottom:3%;width:100%; background-image:url('https://cdn.pixabay.com/photo/2017/02/02/18/16/child-2033444_960_720.jpg'); background-repeat:no-repeat; background-position: center; background-size:cover">
+    style="padding: 20%; margin-bottom:3%;width:100%; background-image:url('https://cdn.pixabay.com/photo/2017/02/02/18/16/child-2033444_960_720.jpg'); background-repeat:no-repeat; background-position: center; background-size:cover">
     <div class="" style="color:white">
-    <h1 style="font-size:50px; font-weight:700">Find Mechanics Closeby</h1>
-    <h3>Our mechanics are available for you anywhere at anytime</h3>
+        <h1 style="font-size:50px; font-weight:700">Find Mechanics Closeby</h1>
+        <h3>Our mechanics are available for you anywhere at anytime</h3>
     </div>
 </div>
 
 <body class="">
 
     <div class="container">
-    <div class="row">
-        <form>
+        <form class="row">
             <div class="col-md-10">
                 <div class="col-md-4">
                     <input type="text" name="mech_query" placeholder="Search for a mechanic" class="form-control">
@@ -33,37 +47,54 @@
             </div>
 
             <div class="col-md-2">
-
-                <input type="submit" value="Submit" style="border:none;" class="btn btn-primary col-md-12">
+                <input type="submit" value="Submit" style="border:none;" class="btnsub btn btn-primary col-md-12">
             </div>
         </form>
-    </div>
-    <h4>For best results consider, reviews specialization and experience</h4>
-    <hr>
-    <h3>Top Mechanics</h3>
-    <h4>See our top mechanics wit great client service</h4>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="text-center" style="height: 300px; background-color:orange; box-sizing: border-box;">
-                <img src="https://pixabay.com/get/gce19265bf199b5a618569588e1c3ae76e97e54e8c7de9f26d6fac6887e3bbb2d160866913032182753c6888f77ddf61f_640.jpg"
-                    height="100%" width="100%" border-radius="50%">
+        <h5 class="results">For best results consider, reviews specialization and experience</h5>
+        <hr>
+        <h3 class="results">Top Mechanics</h3>
+        <h5 style="padding-top:2%">See our top mechanics wit great client service</h5>
+        <div class="row text-center">
+            <div class="col-md-4" style="background-color:blue; box-sizing: border-box;">
+                <div class="photo" style="height: 150px; width: 150px;">
+                    <img src="https://pixabay.com/get/gce19265bf199b5a618569588e1c3ae76e97e54e8c7de9f26d6fac6887e3bbb2d160866913032182753c6888f77ddf61f_640.jpg"
+                        height="100%" width="100%">
+                </div>
+                <p class="lorem"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut
+                    labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                    ut
+                    aliquip ex ea commodo consequat.</p>
             </div>
-            <img src="https://pixabay.com/photos/woman-face-portrait-model-skin-2303361/" height="100%" width="100%"
-                border-radius="50%">
-        </div>
-        <div class="col-md-4">
-            <div style="height: 300px; background-color:red; box-sizing: border-box;"></div>
-            <img src="https://pixabay.com/photos/woman-face-portrait-model-skin-2303361/" height="100%" width="100%"
-                border-radius="50%">
 
-        </div>
-        <div class="col-md-4">
-            <div style="height: 300px; background-color:blue; box-sizing: border-box;"></div>
-            <img src="https://pixabay.com/photos/woman-face-portrait-model-skin-2303361/" height="100%" width="100%"
-                border-radius="50%">
+            <div class="col-md-4" style="background-color:red; box-sizing: border-box;">
+                <div class="photo" style="height: 150px; width: 150px;">
+                    <img src="http://www.robophot.com/wp-content/plugins/widgetkit/cache/gallery/379/002_boehm_andre_130918_test_tiffocsel_no_stackretou_cut_300-6af69709ca.jpg"
+                        height="100%" width="100%">
+                </div>
+                <p class="lorem"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut
+                    labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                    ut
+                    aliquip ex ea commodo consequat.</p>
+            </div>
 
+            <div class="col-md-4" style="background-color:yellowgreen; box-sizing: border-box;">
+                <div class="photo" style="height: 150px; width: 150px;">
+                    <img src="https://images.unsplash.com/photo-1557296387-5358ad7997bb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cG9ydHJhaXRzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
+                        height="100%" width="100%">
+                </div>
+                <p class="lorem"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut
+                    labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                    ut
+                    aliquip ex ea commodo consequat.</p>
+            </div>
         </div>
     </div>
-</div>
+    </div>
 </body>
 {%endblock%}
