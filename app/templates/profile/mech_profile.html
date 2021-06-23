@@ -9,15 +9,24 @@
 
     <!--Displaying user bio-->
     {% if mech.bio %}
+    <h2>Bio: </h2>
       <p> {{mech.bio}}</p>
     {%else%}
       <p> {{mech.username| capitalize}} has no bio </p>
     {% endif %}
 
     {% if mech.specialization %}
-      <p> {{mech.specialization}}</p>
+    <h2>specialization: </h2>
+      <p>{{mech.specialization}}</p>
     {%else%}
       <p> {{mech.username| capitalize}} has no specializations </p>
+    {% endif %}
+
+    {% if mech.location %}
+    <h2>Location: </h2>
+      <p>{{mech.location}}</p>
+    {%else%}
+      <p> {{mech.username| capitalize}} has not added their location </p>
     {% endif %}
   </div>
 

@@ -63,7 +63,8 @@ def update_mech_profile(uname):
 
     if form.validate_on_submit():
         mech.bio = form.bio.data
-
+        mech.specialization = form.specialization.data
+        mech.location= form.location.data
         db.session.add(mech)
         db.session.commit()
 
