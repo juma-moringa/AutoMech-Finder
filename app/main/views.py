@@ -13,10 +13,7 @@ from ..email import mail_message
 @main.route("/", methods=["GET", "POST"])
 def index():
 
-        # db.session.add()
-        # db.session.commit()
-        # mail_message("Thank you for subscribing to Automech",
-        #              "email/welcome")
+       
 
         return render_template("index.html")
 
