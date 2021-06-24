@@ -48,17 +48,17 @@ def logout():
 #####################################################################################################################################
 #################################################################################################################################
   # Login route
-@auth.route('/loginmech', methods=['GET', 'POST'])
-def loginmech():
-    mechlogin_form = LoginForm2()
-    if mechlogin_form.validate_on_submit():
-        mech = Mech.query.filter_by(email=mechlogin_form.email.data).first()
-        if mech is not None and mech.verify_password(mechlogin_form.password.data):
-            login_user(mech, mechlogin_form.remember.data)
-            return redirect(request.args.get('next') or url_for('main.index'))
-        flash('Invalid username or Password')
-    title = "AutoMech login"
-    return render_template('auth/loginmech.html', mechlogin_form=mechlogin_form, title=title)
+# @auth.route('/loginmech', methods=['GET', 'POST'])
+# def loginmech():
+#     mechlogin_form = LoginForm2()
+#     if mechlogin_form.validate_on_submit():
+#         mech = Mech.query.filter_by(email=mechlogin_form.email.data).first()
+#         if mech is not None and mech.verify_password(mechlogin_form.password.data):
+#             login_user(mech, mechlogin_form.remember.data)
+#             return redirect(request.args.get('next') or url_for('main.index'))
+#         flash('Invalid username or Password')
+#     title = "AutoMech login"
+#     return render_template('auth/loginmech.html', mechlogin_form=mechlogin_form, title=title)
 
 # register route
 
