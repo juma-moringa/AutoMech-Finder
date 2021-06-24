@@ -1,33 +1,44 @@
 
+from werkzeug.utils import format_string
+from app import main
+from flask.helpers import flash
 from . import main
-from flask import render_template,request,redirect,url_for,abort, flash
-from flask_login import login_required, current_user
+from .. import db
 from ..models import Mech, User
+from flask_login import login_required, current_user
+from datetime import datetime
+# from ..request import get_quote
+from sqlalchemy.sql import text
+from ..email import mail_message
+from app import models
+from flask import render_template,request,redirect,url_for,abort, flash
 from .. import db,photos
 from .forms import UpdateProfile
-# from app import main
 
 
 
-# @main.route('/')
-# def index():
-#     '''
-#     View root page function that returns the index page and its data
-#     '''
-  
-#     return render_template('index.html')
-  
-# Views
-@main.route('/')
+
+@main.route("/", methods=["GET", "POST"])
 def index():
 
-    '''
-    View root page function that returns the index page and its data
-    '''
+    title = 'AutoMech'
 
-    title = 'Home -Welcha, to mech hub'
+    return render_template('index.html', title=title)
 
-    return render_template('index.html', title=title )
+
+@main.route('/mech')
+def viewmech():
+
+    all_mechs = Mech.query.order_by('id').all()
+
+    title = 'AutoMech'
+    
+    return render_template('viewmech.html', title=title, mech=all_mechs)
+
+
+
+  
+
 
 
 @main.route('/user/<uname>')
@@ -111,4 +122,19 @@ def update_mech_pic(uname):
         db.session.commit()
     return redirect(url_for('main.mech_profile',uname=uname))
 
+
+
+
+@main.route('/search', methods=['GET', 'POST'])
+def search():
+    '''
+    View function to display the search results
+    '''
+    item = request.form['service_query'].lower()
+    location = request.form['location_query'].lower()
+    username = request.form['mech_query'].lower()
+    spec =[]
+    spec = Mech.get_mech(item) or Mech.get_mech2(location) or Mech.get_mech3(username)
+
+    return render_template('display.html', spec= spec)
 

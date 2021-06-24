@@ -38,9 +38,10 @@ class ProdConfig(Config):
     #     SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI.replace("postgres://", "postgresql://")
 
 
-# class TestConfig(Config):
-#     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/mechs_test'
-    
+
+class TestConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:jluseno@localhost/mechs_test'
+
 
 
 
@@ -51,13 +52,14 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/mechs'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:jluseno@localhost/mechs'
+
     DEBUG = True
 
 
 config_options = {
     'development': DevConfig,
     'production': ProdConfig,
-    # 'test': TestConfig
+    'test': TestConfig
 
 }
