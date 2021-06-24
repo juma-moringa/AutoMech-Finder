@@ -5,7 +5,7 @@ from flask_login import login_required, current_user
 from ..models import Mech, User
 from .. import db,photos
 from .forms import UpdateProfile
-from app import main
+# from app import main
 
 
 
@@ -110,11 +110,5 @@ def update_mech_pic(uname):
         mech.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.mech_profile',uname=uname))
-@main.route('/')
-def index():
-    title = 'AutoMech'
-
-
-    return render_template('viewmech.html', title=title)
 
 
