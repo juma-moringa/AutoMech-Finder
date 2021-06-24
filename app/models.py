@@ -87,7 +87,7 @@ class Mech(UserMixin,db.Model):
         return mechs
     @classmethod
     def get_mech3(cls, username):
-        mechs = Mech.query.filter_by(name=username).all()
+        mechs = Mech.query.filter_by(username=username).all()
         return mechs
 
     def verify_password(self,password):
