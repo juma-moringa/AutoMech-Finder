@@ -1,10 +1,13 @@
 <style> .navbar {
-    background-color: rgb(5, 5, 82);
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
     border: none;
     border-radius: 0%;
     margin: 0%;
 }</style>
-<div class="navbar navbar-inverse" role="navigation">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+<div class="navbar navbar-inverse" role="navigation" style="font-family: 'Marck Script', cursive;font-size:20px ;color:blue;">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -12,21 +15,20 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/"> AutoMech </a>
+            <a class="navbar-brand" href="/" style="color:blue;"> AutoMech </a>
         </div>
         <div class="navbar-collapse collapse">
 
             <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
+                <li><a href="/"style="color:blue;">Home</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" >
                 {% if current_user.is_authenticated %}
-                <li><a href="{{url_for('main.user_profile',uname=current_user.username)}}" style="color:rgb(17, 74, 231)">user profile</a></li>
-                <li><a href="{{url_for('main.mech_profile',uname=current_user.username)}}" style="color:rgb(16, 53, 214)">mech profile</a></li>
+                <li><a href="{{url_for('main.user_profile',uname=current_user.username)}}"style="color:blue;" >user profile</a></li>
                 <li><a href="/">{{current_user.username.capitalize()}}</a></li>
-                <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+                <li><a href="{{url_for('auth.logout')}}" style="color:blue;">Sign out</a></li>
                 {% else %}
-                <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+                <li><a href="{{url_for('auth.login')}}" style="color:blue;">Sign in</a></li>
                 {%endif%}
 
               </ul>

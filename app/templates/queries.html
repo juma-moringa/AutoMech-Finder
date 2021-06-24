@@ -1,0 +1,93 @@
+
+Loading history...
+
+Amos kiprotich  12:50 AM
+@main.route('/newqueries',methods = ['GET' , 'POST'])
+def new_query():
+    queries_form = queriesForm()
+    if  queries_form.validate_on_submit():
+        query = queries_form.query.data
+        new_query = Formfield(query=query)
+        db.session.add(new_query)
+        db.session.commit()
+        return redirect(url_for('main.index'))
+    return render_template('new_queries.html',queries_form = queries_form)
+@main.route("/display/<int:id>", methods = ["POST", "GET"])
+def Displayqueries(formfield_id):
+    formfield = Formfield.filter_by(formfield_id=formfield_id).all()
+    display = Display.query.filter_by(post_id=formfield_id).all()
+    queries_Form= queriesForm()
+    if queries_Form.validate_on_submit():
+        display = queries_Form.problem.data
+        new_query = Display(post_id=formfield_id,display=display)
+        new_query.save_display()
+    return render_template('display_queries.html', formfield=formfield, display=display, queries_Form=queries_Form)
+12:51
+class Formfield(db.Model):
+    __tablename__ = 'formfields'
+    id = db.Column(db.Integer, primary_key = True)
+    query = db.Column(db.String(255))
+    time_posted = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    def save_queries(self):
+        """
+        Save the queries
+        """
+        db.session.add(self)
+        db.session.commit()
+12:52
+class Display(db.Model):
+    __tablename__ = "displays"
+    id = db.Column(db.Integer, primary_key = True)
+    display = db.Column(db.String)
+    dispalyed_at = db.Column(db.DateTime)
+    dispalyed_by = db.Column(db.String)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    posted = db.Column(db.DateTime,default=datetime.utcnow)
+    formfield_id = db.column(db.Integer, db.ForeignKey("formfield_id"))
+    def save_display(self):
+        db.session.add(self)
+        db.session.commit()
+    @classmethod
+    def get_comments(cls, id):
+        display= Display.query.filter_by(formfield_id = id).all()
+        return display
+12:55
+{% extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf%}
+{% block content %}
+<div class="container" style="font-size: 20px; font-family: 'Merienda', cursive;  padding-top: 40px;">
+<div class="row">
+<div class="col-md-4 mt-3 p-5">
+    <h3 class="mt-3 pb-3 text-center">Queries</h3>
+    <hr>
+{{wtf.quick_form(queries_form)}}
+{% endblock%}
+New
+12:56
+{% extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf%}
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class= "col-md-2"> </div>
+      <div class="col-md-8">
+      <!--Flash message -->
+      {% for message in get_flashed_messages() %}
+        <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+        </div>
+      {% endfor %}
+      <button><a href="/newqueries">addquery</a></button>
+      <div class="container">
+        {%for query in queries %}
+        <p>{{query.query}}</p>
+        <p>{{query.time_posted}}</p>
+        {% endfor %}
+      </div>
+     </div>
+     <div clas="col-md-2"> </div>
+    </div>
+</div>
+{% endblock%}

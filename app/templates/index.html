@@ -2,285 +2,300 @@
 
 
 {% block content %}
-
-<p>hello, welcome to auto mech</p>
-<a href="{{url_for('main.viewmech')}}">View mech</a>
-
-
-
-<div class="container-fluid">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap" rel="stylesheet">
+<div class="container-fluid" style="font-family: 'Caveat', cursive;font-size :20px;">
     <section class="landing">
         <div id="overlay">
             <div class="d-flex align-items-center justify-content-center" style="height: 500px;">
                 <div>
-                    <h1>WELCOME TO AUTOMECH-FINDER</h1>
-                    <h1>A remote Autorepair anywhere at anytime</h1>
+                    <h1 style="font-weight:bold">WELCOME TO AUTOMECH-FINDER</h1>
+                    <h3>A remote Autorepair anywhere at anytime</h3>
                     <br><br><br>
                     <p>Service at your home or office ·</p>
                     <p> 7 days a week · Fair and transparent pricing</p>
-                    <p> GET AN ESTIMATE</p>   
-                    <p>   12-month / 12,000 mile warranty</p>
+                    <p> GET AN ESTIMATE</p>
+                    <p> 12-month / 12,000 mile warranty</p>
+                    
+                    <a class="btn btn-primary" href="{{url_for( 'main.new_query')}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
+                        <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/>
+                      </svg>QUERIES</a> <br>
+
+                    <a class="btn btn-primary" href="{{url_for('main.viewmech')}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
+                        <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/>
+                      </svg>View Available Mechanics</a>
                 </div>
             </div>
         </div>
     </section>
     <br><br>
-    <div class ="container">
-    <div class=row id=col><br>
-        <div class=col-md-3>
-            <h2>Featured on</h2>
-        </div>
-        <div class=col-md-3>
-             
-            <img src="{{url_for('static',filename='images/NTV_(Kenya)_logo.png')}}" height=50px>
-        </div>
-        <div class=col-md-3>
-        <img src="{{url_for('static',filename='images/citizen.png')}}" height=50px>
-        </div>
-        <div class=col-md-3>
-            <img src="{{url_for('static',filename='images/star.png')}}" height=50px>   
-        </div>
-    </div>
-</div>
-<br><br>
-<div class="container">
-    <div class="row" style="background-color: bisque;">
-        <br><br>
-        <div class="col-md-4">
-            <img src="{{url_for('static',filename='images/fare.jpeg')}}" > 
-            <h4>FAIR AND TRANSPARENT PRICING</h4>
-            <p>We offer fair and transparent pricing and provide estimates upfront for hundreds of services on thousands of cars. Book with confidence.</p>
-        </div>
-        <div class="col-md-4">
-            <img src="{{url_for('static',filename='images/location.jpeg')}}" > 
-            <h4>WE MAKE IT EASY</h4>
-            <p>Get a quote and book a service online 24/7. Our mechanics will come to your home or office, even on evenings and weekends. </p>
-        </div>
-        <div class="col-md-4">
-            <img src="{{url_for('static',filename='images/happy.png')}}" > 
-            <h4>HAPPINESS GUARANTEED</h4>
-            <p>We only work with highly rated mechanics.All services are backed by our 12-month / 12,000-mile warranty.</p>
-        </div>
-    </div>
-</div>
-<br><br><br>
-<div class="container">
-    <h2 style="text-align:center;"><b>GET OVER 50 REPAIR SERVICE AT YOUR HOME OFFICE,HOME OR ANY PLACE</b></h2>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header"> </div>
-                <div class="card-body"> 
-                    <ul>
-                        <li>Battery Replacement</li>
-                        <li>Change Oil and Filter</li>
-                        <li>Car is not starting inspection</li>
-                        <li>Brake Pads Replacement</li>
-                        <li>Timing Belt Replacement</li>
-                        <li>Pre-purchase Car Inspection</li>
-                        <li>AC Compressor Replacement</li>
-                       
-                    </ul>
-                </div> 
+    <div class="container">
+        <div class=row id=col><br>
+            <div class=col-md-3>
+                <h2>Featured on</h2>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header"> </div>
-                <div class="card-body">
-                    <ul>
-                        <li>Starter Replacement</li>
-                        <li>Alternator Replacement</li>
-                        <li>Spark Plugs Replacement</li>
-                        <li>Water Pump Replacement</li>
-                        <li>Fuel Pump Replacement</li>
-                        <li>AC Recharge</li>
-                        <li>Drive Belt Replacement</li>
-                        
-                    </ul>
-                </div> 
-            </div>
+            <div class=col-md-3>
 
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header"> </div>
-                <div class="card-body"> 
-                    <ul>
-                        <li>Radiator Replacement</li>
-                        <li>Oxygen Sensor Replacement</li>
-                        <li>Valve Cover Replacement Gasket Replacement</li>
-                        <li>Thermostart Replacement</li>
-                        <li>Wheel Bearing Replacement</li>
-                        <li>AC not working Inspection</li>
-                        <li>Axle/CV shaft Assembly replacement</li>
-                        
-                    </ul>
-                </div> 
+                <img src="{{url_for('static',filename='images/NTV_(Kenya)_logo.png')}}" height=50px>
             </div>
-
+            <div class=col-md-3>
+                <img src="{{url_for('static',filename='images/citizen.png')}}" height=50px>
+            </div>
+            <div class=col-md-3>
+                <img src="{{url_for('static',filename='images/star.png')}}" height=50px>
+            </div>
         </div>
     </div>
-</div>
-<br><br>
-<div class="container-fluid">
-    <div class = "row">
-       
-        <div class="col-md-6">
-           
-            <img src="{{url_for('static',filename='images/mecha.jpg')}}" height='350px' > 
+    <br><br>
+    <div class="container">
+        <div class="row" style="background-color: bisque;">
+            <br><br>
+            <div class="col-md-4">
+                <img src="{{url_for('static',filename='images/fare.jpeg')}}">
+                <h4>FAIR AND TRANSPARENT PRICING</h4>
+                <p>We offer fair and transparent pricing and provide estimates upfront for hundreds of services on
+                    thousands of cars. Book with confidence.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="{{url_for('static',filename='images/location.jpeg')}}">
+                <h4>WE MAKE IT EASY</h4>
+                <p>Get a quote and book a service online 24/7. Our mechanics will come to your home or office, even on
+                    evenings and weekends. </p>
+            </div>
+            <div class="col-md-4">
+                <img src="{{url_for('static',filename='images/happy.png')}}">
+                <h4>HAPPINESS GUARANTEED</h4>
+                <p>We only work with highly rated mechanics.All services are backed by our 12-months / 12,000-miles
+                    warranty.</p>
+            </div>
         </div>
-        <div class="col-md-6">
-            <h3>Enjoy convenient car repair and maintenance at your home or office.
-                It's as easy as 1-2-3.</h3>
+    </div>
+    <br><br><br>
+    <div class="container">
+        <h2 style="text-align:center; padding-bottom: 2%;"><b>GET OVER 50 REPAIR SERVICES ANYWHERE, ANY TIME</b></h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header"> </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Battery Replacement</li>
+                            <li>Change Oil and Filter</li>
+                            <li>Car is not starting inspection</li>
+                            <li>Brake Pads Replacement</li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header"> </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Starter Replacement</li>
+                            <li>Alternator Replacement</li>
+                            <li>Spark Plugs Replacement</li>
+                            <li>Water Pump Replacement</li>
+
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header"> </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Radiator Replacement</li>
+                            <li>Oxygen Sensor Replacement</li>
+                            <li>Valve Cover Replacement Gasket Replacement</li>
+                            <li>Thermostart Replacement</li>
+
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <img src="{{url_for('static',filename='images/mecha.jpg')}}" width="100%" height='350px'>
+            </div>
+            <div class="col-md-6" style="font-size :12pt;">
+                <h4>Enjoy convenient car repair and maintenance at your home or office.
+                    It's as easy as 1-2-3.</h4>
                 <br>
-                <div class=circle>1</div><H3>MAKE A REQUEST</H3>
-                <p>Tell us what your car needs or ask for a diagnostic. Receive a free, fast, fair & transparent price quote.</p>
+                <H4>MAKE A REQUEST</H4>
+                <p>Tell us what your car needs or ask for a diagnostic. <br> Receive a free, fast, fair & transparent
+                    price quote.</p>
                 <br>
-                <div class=circle>2</div><H3>BOOK APPOINTMENT</H3>
+                <H4>BOOK APPOINTMENT</H4>
                 <p>Provide your home or office location. Tell us when to meet you there.</p>
                 <br>
-                <div class=circle>3</div><H3>GET YOUR CAR FIXED</H3>
+                <H4>GET YOUR CAR FIXED</H4>
                 <p>That’s it. No more waiting in repair shops - our mechanics come to you.</p>
+            </div>
         </div>
     </div>
-</div>
-<br><br>
-<div class="container">
-    <h2>Our Customers Makes The Best Feedback</h2><br>
-    <div class="row">
-       
-        <div class="col-md-4">
-            <img src="{{url_for('static',filename='images/happy1.jpeg')}}" height='100px' > 
-            <h3> BMW Door Lock Replacement</h3>
+    <br><br>
+    <div class="container">
+        <h2 style="font-weight:bold;">Our Customers Makes The Best Feedback</h2><br>
+        <div class="row">
 
-          <p> It ended up costing about half of what it would have cost otherwise. And then when it came time to buy another car, the mechanic came out twice to check out cars and give me a full report over the phone. Really affordable. And it really worked out well for us. We did not have to make time to take our car somewhere and drop it off to be repaired.</p>
-                
-            <h4> Kingori,Mwihoko</h4>
-        </div>
-        <div class="col-md-4">
-            <img src="{{url_for('static',filename='images/happy2.jpeg')}}" height='100px' > 
-            <h3>Jaguar Thermostat Replacement</h3>
-            <p>I really like Whitney because he really took a personal interest in the car and explained to me everything he was going to do with the car... and what problems I might have with something that I hadn't even noticed like the headlights. Nobody's done that for me before and I've had this car for 12 years. Whitney's the best mechanic I've ever seen.</p>
-            <h4>Hamida, Kisumu</h4>
-        </div>
-        <div class="col-md-4">
-            <img src="{{url_for('static',filename='images/happy3.jpeg')}}" height='100px' > 
-            <h3>Lexus Radiator Replacement</h3>
-            <p>Gary who services the cars here for North Marin County was sent out within two days of my request, and it has been very convenient. I didn't have to go find him - he came and found me [and] took care of it right at my home. He cleaned up everything. The car is already put together and that's great.</p>
-            <h4>Larry ,Naivasha</h4>
-        </div>
-    </div>
-</div>
-<br><br><br>
-<div class="container">
-    <H2>We services most models in the country</H2><br>
-    <div class="row">
-        <div class="col-md-2">
-            <img src="{{url_for('static',filename='images/toyota.png')}}"  height='75px' ><br>
-            <p><button type="button" class="btn btn-primary">TOYOTA</button></p>    
-        </div>
-        <div class="col-md-2">
-            <img src="{{url_for('static',filename='images/landrover.jpeg')}}" height='75px'><br>
-            <p><button type="button" class="btn btn-primary">LANDROVER</button></p>
-        </div>
-        <div class="col-md-2">
-            <img src="{{url_for('static',filename='images/lexus.jpeg')}}"height='75px'><br>
-            <p><button type="button" class="btn btn-primary">LEXUS</button></p>
-        </div>
-        <div class="col-md-2">
-            <img src="{{url_for('static',filename='images/mazda.png')}}" height='75px'><br>
-            <p><button type="button" class="btn btn-primary">MAZDA</button></p>
-        </div>
-        <div class="col-md-2">
-            <img src="{{url_for('static',filename='images/nissan.jpeg')}}" height='75px'><br>
-            <p><button type="button" class="btn btn-primary">NISSAN</button></p>
-        </div>
-        <div class="col-md-2">
-            <img src="{{url_for('static',filename='images/subaru.jpeg')}}" height='75px'><br>
-            <p><button type="button" class="btn btn-primary">SUBARU</button></p>
+            <div class="col-md-4">
+                <img src="{{url_for('static',filename='images/happy1.jpeg')}}" height='100px'>
+                <h3> BMW Door Lock Replacement</h3>
+
+                <p> It ended up costing about half of what it would have cost otherwise. And then when it came time to
+                    buy another car, the mechanic came out twice to check out cars and give me a full report over the
+                    phone. Really affordable. And it really worked out well for us. We did not have to make time to take
+                    our car somewhere and drop it off to be repaired.</p>
+
+                <h4> Kingori,Mwihoko</h4>
+            </div>
+            <div class="col-md-4">
+                <img src="{{url_for('static',filename='images/happy2.jpeg')}}" height='100px'>
+                <h3>Jaguar Thermostat Replacement</h3>
+                <p>I really like Whitney because he really took a personal interest in the car and explained to me
+                    everything he was going to do with the car... and what problems I might have with something that I
+                    hadn't even noticed like the headlights. Nobody's done that for me before and I've had this car for
+                    12 years. Whitney's the best mechanic I've ever seen.</p>
+                <h4>Hamida, Kisumu</h4>
+            </div>
+            <div class="col-md-4">
+                <img src="{{url_for('static',filename='images/happy3.jpeg')}}" height='100px'>
+                <h3>Lexus Radiator Replacement</h3>
+                <p>Gary who services the cars here for North Marin County was sent out within two days of my request,
+                    and it has been very convenient. I didn't have to go find him - he came and found me [and] took care
+                    of it right at my home. He cleaned up everything. The car is already put together and that's great.
+                </p>
+                <h4>Larry ,Naivasha</h4>
+            </div>
         </div>
     </div>
-    <br><br>
-    <div class="row">
-        <div class="col-md-2">
-            <img src="{{url_for('static',filename='images/suzuki.png')}}" height='75px'><br>
-            <p><button type="button" class="btn btn-primary">SUZUKI</button></p>
-        </div>
-        <div class="col-md-2">
-            <img src="{{url_for('static',filename='images/tesla.jpeg')}}" height='75px'><br>
-            <p><button type="button" class="btn btn-primary">TESLA</button></p>
-        </div>
-        <div class="col-md-2">
-            <img src="{{url_for('static',filename='images/tata.jpeg')}}" height='75px'><br>
-            <p><button type="button" class="btn btn-primary">TATA</button></p>
-        </div>
-        <div class="col-md-2">
-            <img src="{{url_for('static',filename='images/isuzu.png')}}"height='75px' ><br>
-            <p><button type="button" class="btn btn-primary">ISUZU</button></p>
-        </div>
-        <div class="col-md-2">
-            <img src="{{url_for('static',filename='images/sania.jpeg')}}" height='75px'><br>
-            <p><button type="button" class="btn btn-primary">SCANIA</button></p>
-        </div>
-        <div class="col-md-2">
-        <img src="{{url_for('static',filename='images/bently.png')}}" height='75px'><br>
-            <p><button type="button" class="btn btn-primary">BENTLY</button></p>
-        </div>
-    </div>
-</div>
-<br><br><br>
-<div class="container-fluid" id="footer">
     <br><br><br>
-    <H3>Hello Can We Help?</H3>
-    <br><br>
-    <h4>Our Servce Team Available 7 Days a Week</h4>
-    <br><br>
-    <h5>+2547222222</h5>
-    <h5>hi@automech-finder.com</h5>
+    <div class="container">
+        <H2 style="font-weight:bold;">We services most models in the country</H2><br>
+        <div class="row">
+            <div class="col-md-2">
+                <img src="{{url_for('static',filename='images/toyota.png')}}" height='75px'><br>
+                <p><button type="button" class="btn btn-primary">TOYOTA</button></p>
+            </div>
+            <div class="col-md-2">
+                <img src="{{url_for('static',filename='images/landrover.jpeg')}}" height='75px'><br>
+                <p><button type="button" class="btn btn-primary">LANDROVER</button></p>
+            </div>
+            <div class="col-md-2">
+                <img src="{{url_for('static',filename='images/lexus.jpeg')}}" height='75px'><br>
+                <p><button type="button" class="btn btn-primary">LEXUS</button></p>
+            </div>
+            <div class="col-md-2">
+                <img src="{{url_for('static',filename='images/mazda.png')}}" height='75px'><br>
+                <p><button type="button" class="btn btn-primary">MAZDA</button></p>
+            </div>
+            <div class="col-md-2">
+                <img src="{{url_for('static',filename='images/nissan.jpeg')}}" height='75px'><br>
+                <p><button type="button" class="btn btn-primary">NISSAN</button></p>
+            </div>
+            <div class="col-md-2">
+                <img src="{{url_for('static',filename='images/subaru.jpeg')}}" height='75px'><br>
+                <p><button type="button" class="btn btn-primary">SUBARU</button></p>
+            </div>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-md-2">
+                <img src="{{url_for('static',filename='images/suzuki.png')}}" height='75px'><br>
+                <p><button type="button" class="btn btn-primary">SUZUKI</button></p>
+            </div>
+            <div class="col-md-2">
+                <img src="{{url_for('static',filename='images/tesla.jpeg')}}" height='75px'><br>
+                <p><button type="button" class="btn btn-primary">TESLA</button></p>
+            </div>
+            <div class="col-md-2">
+                <img src="{{url_for('static',filename='images/tata.jpeg')}}" height='75px'><br>
+                <p><button type="button" class="btn btn-primary">TATA</button></p>
+            </div>
+            <div class="col-md-2">
+                <img src="{{url_for('static',filename='images/isuzu.png')}}" height='75px'><br>
+                <p><button type="button" class="btn btn-primary">ISUZU</button></p>
+            </div>
+            <div class="col-md-2">
+                <img src="{{url_for('static',filename='images/sania.jpeg')}}" height='75px'><br>
+                <p><button type="button" class="btn btn-primary">SCANIA</button></p>
+            </div>
+            <div class="col-md-2">
+                <img src="{{url_for('static',filename='images/bently.png')}}" height='75px'><br>
+                <p><button type="button" class="btn btn-primary">BENTLY</button></p>
+            </div>
+        </div>
+    </div>
     <br><br><br>
-</div>
-<div class="container">
-    <div class="social">
-        <h2>Social Media Handles</h2>
-        <img src="{{url_for('static',filename='images/facebook.jpeg')}}" height='75px'>
-        <img src="{{url_for('static',filename='images/pintest.png')}}" height='75px'>
-        <img src="{{url_for('static',filename='images/linkedin.png')}}" height='75px'>
-        <img src="{{url_for('static',filename='images/twitter.jpeg')}}" height='75px'>
-        <img src="{{url_for('static',filename='images/instagram.jpeg')}}" height='75px'>
-    </div>    
-</div>
+    <div class="container-fluid" id="footer">
+        <br><br><br>
+        <H3>Hello Can We Help?</H3>
+        <br><br>
+        <h4>Our Servce Team Available 7 Days a Week</h4>
+        <br><br>
+        <h5>+2547222222</h5>
+        <h5>hi@automech-finder.com</h5>
+        <br><br><br>
+    </div>
+    <div class="container">
+        <div class="social">
+            <h2>Social Media Handles</h2>
+            <img src="{{url_for('static',filename='images/facebook.jpeg')}}" height='75px'>
+            <img src="{{url_for('static',filename='images/pintest.png')}}" height='75px'>
+            <img src="{{url_for('static',filename='images/linkedin.png')}}" height='75px'>
+            <img src="{{url_for('static',filename='images/twitter.jpeg')}}" height='75px'>
+            <img src="{{url_for('static',filename='images/instagram.jpeg')}}" height='75px'>
+        </div>
+    </div>
 </div>
 
 
 <style>
     .landing {
-    background-color: #ebebeb;
-    background: url('https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?cs=srgb&dl=pexels-andrea-piacquadio-3807517.jpg&fm=jpg') no-repeat fixed 100% 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 0 auto;
-    flex-direction: column;
-    text-align: center;
-    background-position: center center;
-}
+        background-color: #ebebeb;
+        background: url('https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?cs=srgb&dl=pexels-andrea-piacquadio-3807517.jpg&fm=jpg') no-repeat fixed 100% 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin: 0 auto;
+        flex-direction: column;
+        text-align: center;
+        background-position: center center;
+    }
 
-#overlay {
-    top: 0;
-    bottom: 0;
-    padding: 8%;
-    font-size: 18px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    
-}
-#col{
-    background-color:grey
-}
-*{
-    text-align: center;
-}
-.circle{
+    #overlay {
+        top: 0;
+        bottom: 0;
+        padding: 8%;
+        font-size: 18px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+
+    }
+
+    #col {
+        background-color: grey
+    }
+
+    * {
+        text-align: center;
+    }
+
+    /* .circle{
     
   border-radius: 50%;
   width: 34px;
@@ -291,13 +306,15 @@
   text-align: center;
   font: 32px Arial, sans-serif;
 
-}
-#footer{
-    color:white;
-    background-color: blue;
-}
+} */
+    #footer {
+        color: white;
+        background-color: blue;
+    }
 
-
-</style> 
+    li {
+        list-style: none;
+    }
+</style>
 
 {% endblock%}

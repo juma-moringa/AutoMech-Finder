@@ -9,9 +9,6 @@ from . import login_manager
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-@login_manager.user_loader
-def load_mech(mech_id):
-    return Mech.query.get(int(mech_id))
 
 
 # user class
@@ -38,11 +35,11 @@ class User(UserMixin,db.Model):
 
     @password.setter
     def password(self, password):
-        self.pass_secure = generate_password_hash(password)
+        self.password_hash = generate_password_hash(password)
 
 
     def verify_password(self,password):
-        return check_password_hash(self.pass_secure,password)
+        return check_password_hash(self.password_hash,password)
 
     
     def __repr__(self):
@@ -98,4 +95,32 @@ class Mech(UserMixin,db.Model):
 
 
 
+class Formfield(db.Model):
+    __tablename__ = 'formfields'
+    id = db.Column(db.Integer, primary_key = True)
+    query = db.Column(db.String(255))
+    time_posted = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    def save_queries(self):
+        """
+        Save the queries
+        """
+        db.session.add(self)
+        db.session.commit()
 
+class Display(db.Model):
+    __tablename__ = "displays"
+    id = db.Column(db.Integer, primary_key = True)
+    display = db.Column(db.String)
+    dispalyed_at = db.Column(db.DateTime)
+    dispalyed_by = db.Column(db.String)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    posted = db.Column(db.DateTime,default=datetime.utcnow)
+    formfield_id = db.column(db.Integer, db.ForeignKey("formfield_id"))
+    def save_display(self):
+        db.session.add(self)
+        db.session.commit()
+    @classmethod
+    def get_comments(cls, id):
+        display= Display.query.filter_by(formfield_id = id).all()
+        return display
