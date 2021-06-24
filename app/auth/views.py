@@ -26,8 +26,9 @@ def login():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(email=form.email.data,
-                    username=form.username.data, password=form.password.data)
+
+        user = User(email = form.email.data, role = 'user',username = form.username.data,password = form.password.data)
+
         db.session.add(user)
         db.session.commit()
         mail_message("Welcome to AutoMech",
@@ -47,18 +48,20 @@ def logout():
 
 #####################################################################################################################################
 #################################################################################################################################
-  # Login route
-# @auth.route('/loginmech', methods=['GET', 'POST'])
-# def loginmech():
-#     mechlogin_form = LoginForm2()
-#     if mechlogin_form.validate_on_submit():
-#         mech = Mech.query.filter_by(email=mechlogin_form.email.data).first()
-#         if mech is not None and mech.verify_password(mechlogin_form.password.data):
-#             login_user(mech, mechlogin_form.remember.data)
-#             return redirect(request.args.get('next') or url_for('main.index'))
-#         flash('Invalid username or Password')
-#     title = "AutoMech login"
-#     return render_template('auth/loginmech.html', mechlogin_form=mechlogin_form, title=title)
+
+  #Login route
+@auth.route('/login/mech',methods = ['GET' , 'POST'])
+def loginmech():
+    login_form = LoginForm2()
+    if login_form.validate_on_submit():
+        mech = Mech.query.filter_by(email = login_form.email.data).first()
+        if mech is not None and mech.verify_password(login_form.password.data):
+            login_user(mech,login_form.remember.data)
+            return redirect(request.args.get('next') or url_for('main.index'))
+        flash('Invalid username or Password')
+    title = "AutoMech login"
+    return render_template('auth/login.html',login_form = login_form,title=title)
+
 
 # register route
 
@@ -67,8 +70,9 @@ def logout():
 def registermech():
     formmech = RegistrationForm2()
     if formmech.validate_on_submit():
-        mech = Mech(email=formmech.email.data,
-                    username=formmech.username.data, password=formmech.password.data)
+
+        mech = Mech(email = formmech.email.data,role = "mechanic", username = formmech.username.data,password = formmech.password.data, specialization = formmech.specialization.data, location = formmech.location.data)
+
         db.session.add(mech)
         db.session.commit()
         mail_message("Welcome to AutoMech",
