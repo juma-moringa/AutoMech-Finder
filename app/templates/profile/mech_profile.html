@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="container">
+<div class="row">
+<!-- displaying  Username-->
+  <div class="col-md-4">
+    <h3> {{mech.username| capitalize}} </h3>
+
+    <!--Displaying user bio-->
+    {% if mech.bio %}
+    <h2>Bio: </h2>
+      <p> {{mech.bio}}</p>
+    {%else%}
+      <p> {{mech.username| capitalize}} has no bio </p>
+    {% endif %}
+
+    {% if mech.specialization %}
+    <h2>specialization: </h2>
+      <p>{{mech.specialization}}</p>
+    {%else%}
+      <p> {{mech.username| capitalize}} has no specializations </p>
+    {% endif %}
+
+    {% if mech.location %}
+    <h2>Location: </h2>
+      <p>{{mech.location}}</p>
+    {%else%}
+      <p> {{mech.username| capitalize}} has not added their location </p>
+    {% endif %}
+  </div>
+
+  <!--Display profile photo-->
+  <div class="col-md-4">
+
+    {% if mech.profile_pic_path %}
+    <img src="{{url_for('static',filename=mech.profile_pic_path)}}" alt="" class="img-thumbnail">
+    {%else%}
+    <p>No profile picture</p>
+    {% endif %}
+  </div>
+  {% if mech == current_user %}
+    <a href="{{url_for('main.update_mech_profile',uname=mech.username)}}">Edit profile</a>
+ {% endif %}
+ {% if mech == current_user %}
+    <form  action="{{url_for('main.update_mech_pic',uname=mech.username)}}" method="post" enctype = "multipart/form-data">
+
+      <input type="file"  name="photo" class="form-control" required>
+      <input type="submit">
+    </form>
+      {% endif %}
+</div>
+</div>
+{% endblock %}

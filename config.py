@@ -9,6 +9,8 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
 
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://angela:Angie168@localhost/mechfinder'
+
 
     #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
@@ -30,13 +32,13 @@ class ProdConfig(Config):
         Config: The parent configuration class with General configuration settings
     '''
 
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
     # if SQLALCHEMY_DATABASE_URI.startswith("postgres://"):
     #     SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI.replace("postgres://", "postgresql://")
 
 
-class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/mechs_test'
+# class TestConfig(Config):
+#     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/mechs_test'
     
 
 
@@ -48,12 +50,12 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/mechs'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://angela:Angie168@localhost/mechfinder'
     DEBUG = True
 
 
 config_options = {
     'development': DevConfig,
     'production': ProdConfig,
-    'test': TestConfig
+    # 'test': TestConfig
 }
