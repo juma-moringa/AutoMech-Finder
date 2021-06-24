@@ -1,4 +1,3 @@
-
 from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
@@ -9,6 +8,10 @@ from . import login_manager
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+@login_manager.user_loader
+def load_mech(mech_id):
+    return Mech.query.get(int(mech_id))
 
 
 # user class
@@ -27,27 +30,23 @@ class User(UserMixin,db.Model):
     password_hash = db.Column(db.String(255))
     role = db.Column(db.String(255))
 
-    
 
 
-    
     @property
     def password(self):
-        raise AttributeError('You cannnot read the password attribute')
+        raise AttributeError('You cannot read the password attribute')
 
     @password.setter
     def password(self, password):
-        self.password_hash = generate_password_hash(password)
+        self.pass_secure = generate_password_hash(password)
 
 
     def verify_password(self,password):
-        return check_password_hash(self.password_hash,password)
+        return check_password_hash(self.pass_secure,password)
 
-  
-
+    
     def __repr__(self):
         return f'User {self.username}'
-
 
 
 class Mech(UserMixin,db.Model):
@@ -96,3 +95,7 @@ class Mech(UserMixin,db.Model):
 
     def __repr__(self):
         return f'Mech {self.username}'
+
+
+
+
