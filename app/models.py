@@ -92,3 +92,19 @@ class Mech(UserMixin,db.Model):
 
     def __repr__(self):
         return f'Mech {self.username}'
+
+
+class Formfield(db.Model):
+    __tablename__ = 'formfilds'
+    id = db.Column(db.Integer, primary_key = True)
+    query = db.Column(db.String(255))
+    time_posted = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    def save_queries(self):
+        """
+        Save the queries
+        """
+        db.session.add(self)
+        db.session.commit()
+

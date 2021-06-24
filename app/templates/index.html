@@ -1,4 +1,8 @@
 {% extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf%}
 {% block content %}
 <p>hello, welcome to auto mech</p>
+{% if current_user.is_authenticated %}
+<a href="{{url_for('main.queries')}}">QUERIES</a>
+{%endif%}
 {%endblock%}
