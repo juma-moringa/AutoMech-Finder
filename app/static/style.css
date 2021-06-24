@@ -1,0 +1,19 @@
+.landing {
+    background-color: #ebebeb;
+    background: url('../images/l_lmage.jpg') no-repeat fixed 100% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    flex-direction: column;
+    text-align: center;
+    background-position: center center;
+}
+
+#overlay {
+    top: 0;
+    bottom: 0;
+    padding: 8%;
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}

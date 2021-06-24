@@ -1,6 +1,7 @@
 import os
 
 
+
 class Config:
     '''
     General configuration parent class
@@ -58,4 +59,5 @@ config_options = {
     'development': DevConfig,
     'production': ProdConfig,
     # 'test': TestConfig
+
 }

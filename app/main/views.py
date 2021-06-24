@@ -1,3 +1,4 @@
+
 from . import main
 from flask import render_template,request,redirect,url_for,abort, flash
 from flask_login import login_required, current_user
@@ -8,13 +9,25 @@ from app import main
 
 
 
+# @main.route('/')
+# def index():
+#     '''
+#     View root page function that returns the index page and its data
+#     '''
+  
+#     return render_template('index.html')
+  
+# Views
 @main.route('/')
 def index():
+
     '''
     View root page function that returns the index page and its data
     '''
-  
-    return render_template('index.html')
+
+    title = 'Home -Welcha, to mech hub'
+
+    return render_template('index.html', title=title )
 
 
 @main.route('/user/<uname>')
@@ -103,6 +116,5 @@ def index():
 
 
     return render_template('viewmech.html', title=title)
-
 
 
