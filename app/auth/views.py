@@ -47,17 +47,17 @@ def logout():
 #####################################################################################################################################
 #################################################################################################################################
   #Login route
-@auth.route('/login',methods = ['GET' , 'POST'])
+@auth.route('/loginmech',methods = ['GET' , 'POST'])
 def loginmech():
-    login_form = LoginForm2()
-    if login_form.validate_on_submit():
-        mech = Mech.query.filter_by(email = login_form.email.data).first()
-        if mech is not None and mech.verify_password(login_form.password.data):
-            login_user(mech,login_form.remember.data)
+    mechlogin_form = LoginForm2()
+    if mechlogin_form.validate_on_submit():
+        mech = Mech.query.filter_by(email = mechlogin_form.email.data).first()
+        if mech is not None and mech.verify_password(mechlogin_form.password.data):
+            login_user(mech,mechlogin_form.remember.data)
             return redirect(request.args.get('next') or url_for('main.index'))
         flash('Invalid username or Password')
     title = "AutoMech login"
-    return render_template('auth/login.html',login_form = login_form,title=title)
+    return render_template('auth/loginmech.html',mechlogin_form = mechlogin_form,title=title)
 
 #register route
 @auth.route('/registermech',methods = ["GET","POST"])
@@ -68,7 +68,9 @@ def registermech():
         db.session.add(mech)
         db.session.commit()
         mail_message("Welcome to AutoMech","email/welcome_user",mech.email,mech=mech)
-        return redirect(url_for('auth.login'))
+
+        return redirect(url_for('main.index'))
+    flash('We have recieved your details our technical team will review it and let you know as soon as possible.')
     title = "New Account"
     return render_template('auth/registermech.html',registration_form2 = formmech)
 

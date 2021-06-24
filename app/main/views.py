@@ -4,6 +4,8 @@ from flask_login import login_required, current_user
 from ..models import Mech, User
 from .. import db,photos
 from .forms import UpdateProfile
+from app import main
+
 
 
 @main.route('/')
@@ -14,12 +16,14 @@ def index():
   
     return render_template('index.html')
 
+
 @main.route('/user/<uname>')
 def user_profile(uname):
     user = User.query.filter_by(username = uname).first()
 
     if user is None:
         abort(404)
+
 
     return render_template("profile/user_profile.html", user = user)
 
@@ -93,3 +97,12 @@ def update_mech_pic(uname):
         mech.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.mech_profile',uname=uname))
+@main.route('/')
+def index():
+    title = 'AutoMech'
+
+
+    return render_template('viewmech.html', title=title)
+
+
+
