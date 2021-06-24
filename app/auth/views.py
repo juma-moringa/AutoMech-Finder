@@ -27,7 +27,7 @@ def login():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(email = form.email.data, username = form.username.data,password = form.password.data)
+        user = User(email = form.email.data, role = 'user',username = form.username.data,password = form.password.data)
         db.session.add(user)
         db.session.commit()
         mail_message("Welcome to AutoMech","email/welcome_user",user.email,user=user)
@@ -47,7 +47,7 @@ def logout():
 #####################################################################################################################################
 #################################################################################################################################
   #Login route
-@auth.route('/login',methods = ['GET' , 'POST'])
+@auth.route('/login/mech',methods = ['GET' , 'POST'])
 def loginmech():
     login_form = LoginForm2()
     if login_form.validate_on_submit():
@@ -64,7 +64,7 @@ def loginmech():
 def registermech():
     formmech = RegistrationForm2()
     if formmech.validate_on_submit():
-        mech = Mech(email = formmech.email.data, username = formmech.username.data,password = formmech.password.data)
+        mech = Mech(email = formmech.email.data,role = "mechanic", username = formmech.username.data,password = formmech.password.data, specialization = formmech.specialization.data, location = formmech.location.data)
         db.session.add(mech)
         db.session.commit()
         mail_message("Welcome to AutoMech","email/welcome_user",mech.email,mech=mech)

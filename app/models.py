@@ -25,6 +25,8 @@ class User(UserMixin,db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
+    role = db.Column(db.String(255))
+
     
 
 
@@ -75,6 +77,18 @@ class Mech(UserMixin,db.Model):
     def password(self, password):
         self.pass_secure = generate_password_hash(password)
 
+    @classmethod
+    def get_mech(cls, spec):
+        mechs = Mech.query.filter_by(specialization=spec).all()
+        return mechs
+    @classmethod
+    def get_mech2(cls, location):
+        mechs = Mech.query.filter_by(location=location).all()
+        return mechs
+    @classmethod
+    def get_mech3(cls, username):
+        mechs = Mech.query.filter_by(username=username).all()
+        return mechs
 
     def verify_password(self,password):
         return check_password_hash(self.pass_secure,password)
