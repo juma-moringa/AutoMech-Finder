@@ -16,5 +16,5 @@ class queriesForm(FlaskForm):
       """
       Class to create a wtf form for adding a car defect
       """
-      problem = TextAreaField('Car Defect:')
+      query = TextAreaField('Car Defect:')
       submit = SubmitField('SUBMIT')

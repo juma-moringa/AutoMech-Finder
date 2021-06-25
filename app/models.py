@@ -95,7 +95,7 @@ class Mech(UserMixin,db.Model):
 
 
 class Formfield(db.Model):
-    __tablename__ = 'formfilds'
+    __tablename__ = 'formfields'
     id = db.Column(db.Integer, primary_key = True)
     query = db.Column(db.String(255))
     time_posted = db.Column(db.DateTime, default=datetime.utcnow)
@@ -108,3 +108,30 @@ class Formfield(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    # @classmethod
+    # def get_queries(id):
+    #     queries = Formfield.query.filter_by(post_id=id).all()
+    #     return queries
+
+
+
+class Display(db.Model):
+    __tablename__ = "displays"
+
+    id = db.Column(db.Integer, primary_key = True)
+    display = db.Column(db.String)
+    dispalyed_at = db.Column(db.DateTime)
+    dispalyed_by = db.Column(db.String)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    posted = db.Column(db.DateTime,default=datetime.utcnow)
+    formfield_id = db.column(db.Integer, db.ForeignKey("formfield_id"))
+
+    def save_display(self):
+        db.session.add(self)
+        db.session.commit()
+
+
+    @classmethod
+    def get_comments(cls, id):
+        display= Display.query.filter_by(formfield_id = id).all()
+        return display

@@ -3,6 +3,6 @@
 {% block content %}
 <p>hello, welcome to auto mech</p>
 {% if current_user.is_authenticated %}
-<a href="{{url_for('main.queries')}}">QUERIES</a>
+<a href="{{url_for( 'main.new_query')}}">QUERIES</a>
 {%endif%}
 {%endblock%}

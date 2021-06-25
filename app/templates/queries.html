@@ -12,8 +12,14 @@
         {{ message }}
         </div>
       {% endfor %}
-      <!-- Login form -->
-      {{wtf.quick_form(queries_form)}}
+      <button><a href="/newqueries">addquery</a></button>
+      <div class="container">
+        {%for query in queries %}
+        <p>{{query.query}}</p>
+        <p>{{query.time_posted}}</p>
+        {% endfor %}
+
+      </div>
      </div>
      <div clas="col-md-2"> </div>
     </div>
