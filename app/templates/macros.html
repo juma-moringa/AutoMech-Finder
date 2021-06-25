@@ -4,10 +4,11 @@
     img {
         border-radius: 50%;
     }
+
     #outer-div {
         text-align: center;
         padding-top: 3%;
-        
+
     }
 
     #inner-div {
@@ -15,14 +16,17 @@
         margin: 0 auto;
     }
 
-    .mech-info{
+    .mech-info {
         /* text-align: left; */
-        border-radius:2%;
+        border-radius: 2%;
         box-shadow: 0vh 0vh 3vh rgb(194, 189, 189);
         background-color: rgb(238, 233, 233);
     }
 </style>
-<div class="col-md-4" id="outer-div">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap" rel="stylesheet">
+<div class="col-md-4" id="outer-div" style="font-family: 'Caveat', cursive;">
     <div class="mech-info" style="box-sizing: border-box; padding: 2%;">
         <div class="photo" id="inner-div" style="height: 120px; width: 120px;">
 
@@ -35,15 +39,15 @@
         </div>
         <p style="font-size:13pt">Name : {{mech.username}}</p>
         <p style="font-size:11pt"> From : {{mech.location}}</p>
-
+        
+      
         <p>Specialization: {{mech.specialization}}</p>
-        <a href="/" type="button" style="border: none;" class=" btn btn-info d-flex">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-envelope-open-fill" viewBox="0 0 16 16">
-                <path
-                    d="M8.941.435a2 2 0 0 0-1.882 0l-6 3.2A2 2 0 0 0 0 5.4v.313l6.709 3.933L8 8.928l1.291.717L16 5.715V5.4a2 2 0 0 0-1.059-1.765l-6-3.2zM16 6.873l-5.693 3.337L16 13.372v-6.5zm-.059 7.611L8 10.072.059 14.484A2 2 0 0 0 2 16h12a2 2 0 0 0 1.941-1.516zM0 13.373l5.693-3.163L0 6.873v6.5z" />
-            </svg>
+        <a href="{{url_for('main.mech_profile',uname=mech.username)}}" type="button" style="border: none;"
+            class=" btn btn-info d-flex">
+            View Profile
         </a>
+        
+     
         <p class="lorem"></p>
     </div>
 </div>

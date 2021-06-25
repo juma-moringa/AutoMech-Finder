@@ -1,10 +1,11 @@
 
 from werkzeug.utils import format_string
+from wtforms.fields.core import FormField
 from app import main
 from flask.helpers import flash
 from . import main
 from .. import db
-from ..models import Mech, User
+from ..models import Display, Formfield, Mech, User
 from flask_login import login_required, current_user
 from datetime import datetime
 # from ..request import get_quote
@@ -13,7 +14,7 @@ from ..email import mail_message
 from app import models
 from flask import render_template,request,redirect,url_for,abort, flash
 from .. import db,photos
-from .forms import UpdateProfile
+from .forms import UpdateProfile, queriesForm
 
 
 
@@ -27,6 +28,7 @@ def index():
 
 
 @main.route('/mech')
+
 def viewmech():
 
     all_mechs = Mech.query.order_by('id').all()
@@ -42,6 +44,7 @@ def viewmech():
 
 
 @main.route('/user/<uname>')
+@login_required
 def user_profile(uname):
     user = User.query.filter_by(username = uname).first()
 
@@ -137,4 +140,26 @@ def search():
     spec = Mech.get_mech(item) or Mech.get_mech2(location) or Mech.get_mech3(username)
 
     return render_template('display.html', spec= spec)
+    
+@main.route('/newqueries',methods = ['GET' , 'POST'])
+def new_query():
+    queries_form = queriesForm()
+    if  queries_form.validate_on_submit():
+        query = queries_form.query.data
+        new_query = FormField(query=query)
+        db.session.add(new_query)
+        db.session.commit()
+        return redirect(url_for('main.index'))
+    return render_template('new_queries.html',queries_form = queries_form)
+    
+@main.route("/display/<int:id>", methods = ["POST", "GET"])
+def Displayqueries(formfield_id):
+    formfield = Formfield.filter_by(formfield_id=formfield_id).all()
+    display = Display.query.filter_by(post_id=formfield_id).all()
+    queries_Form= queriesForm()
+    if queries_Form.validate_on_submit():
+        display = queries_Form.problem.data
+        new_query = Display(post_id=formfield_id,display=display)
+        new_query.save_display()
+    return render_template('display_queries.html', formfield=formfield, display=display, queries_Form=queries_Form)
 
